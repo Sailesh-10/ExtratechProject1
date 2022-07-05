@@ -19,7 +19,8 @@ require_once 'footer.php';
 </head>
 
 <body>
-
+    <P></P>
+    <p></p>
     <?php
     require('db.php');
 
