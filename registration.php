@@ -102,13 +102,13 @@ require_once 'footer.php';
                             <p class="text-dark"> Choose Your Gender</p>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="gender" id="male">
+                            <input class="custom-control-input" type="radio" name="gender" id="male" value="Male">
                             <label class="custom-control-label" for="male">
                                 Male
                             </label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="gender" id="female">
+                            <input class="custom-control-input" type="radio" name="gender" id="female" value="Female">
                             <label class="custom-control-label" for="female">
                                 Female
                             </label>

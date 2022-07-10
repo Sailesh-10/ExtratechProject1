@@ -2,7 +2,7 @@
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
-require_once 'header1.php';
+require_once 'admin_header1.php';
 ?>
 <?php
 require_once 'auth_session.php';
@@ -10,6 +10,7 @@ require_once 'auth_session.php';
 
 <?php
 require_once 'footer.php';
+$id = $_GET['id'];
 ?>
 
 <!DOCTYPE html>
@@ -17,15 +18,15 @@ require_once 'footer.php';
 
 <head>
     <meta charset="utf-8" />
-    <title>Update Details</title>
+    <title>Update User Details</title>
 
 </head>
 
 <body>
     <?php
     require('db.php');
-    $email = $_SESSION['email'];
-    $query = " SELECT * FROM `Users` WHERE user_email = '$email'";
+
+    $query = " SELECT * FROM `Users` WHERE user_id = '$id'";
 
     $result = mysqli_query($con, $query) or die(mysql_error());
     $row = mysqli_fetch_assoc($result);
@@ -67,8 +68,7 @@ require_once 'footer.php';
         if (empty($image)) {
             $image =  $row['user_image'];
         }
-        $eemail = $_SESSION['email'];
-        $query    = "UPDATE `Users` SET  user_fname='$firstname', user_lname='$lastname', user_password='$password', user_gender='$gender', user_address='$address', mobile='$mobile', user_image='$image' WHERE user_email='$eemail'";
+        $query    = "UPDATE `Users` SET  user_fname='$firstname', user_lname='$lastname', user_password='$password', user_gender='$gender', user_address='$address', mobile='$mobile', user_image='$image' WHERE user_id='$id'";
 
         $result   = mysqli_query($con, $query);
         if ($result) {
@@ -78,7 +78,7 @@ require_once 'footer.php';
                   <h3>You have updated details successfully.</h3><br/>
                   <p class='link'>Click here to <a href='login.php'>Login</a></p>
                   </div>";
-            header("Location: dashboard_user.php");
+            header("Location: admin_dashboard.php");
         } else {
             echo "<div class='form'>
                   <h3>Missing Fields.</h3><br/>
